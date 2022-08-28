@@ -1,17 +1,64 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap");
+:root {
+  --animation-time: 2000ms;
+  --delay-time: 500ms;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Roboto", sans-serif;
+  background-color: darkslateblue;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
   overflow: hidden;
   margin: 0;
+}
+
+.kinetic {
+  position: relative;
+  height: 80px;
+  width: 80px;
+}
+.kinetic::before, .kinetic::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border: 50px solid transparent;
+  border-bottom-color: #fff;
+  animation: rotateA var(--animation-time) linear infinite var(--delay-time);
+}
+.kinetic::before {
+  transform: rotate(90deg);
+  animation: rotateB var(--animation-time) linear infinite;
+}
+
+@keyframes rotateA {
+  0%, 25% {
+    transform: rotate(0deg);
+  }
+  50%, 75% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotateB {
+  0%, 25% {
+    transform: rotate(90deg);
+  }
+  50%, 75% {
+    transform: rotate(270deg);
+  }
+  100% {
+    transform: rotate(450deg);
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
